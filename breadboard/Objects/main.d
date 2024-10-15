@@ -1,0 +1,19 @@
+./objects/main.o: user\main.c Start\stm32f10x.h Start\core_cm3.h \
+  S:\Keil5\ARM\ARMCLANG\Bin\..\include\stdint.h Start\cmsis_version.h \
+  Start\cmsis_compiler.h Start\cmsis_armclang.h Start\system_stm32f10x.h \
+  user\stm32f10x_conf.h library\stm32f10x_adc.h library\stm32f10x_bkp.h \
+  library\stm32f10x_can.h library\stm32f10x_cec.h \
+  library\stm32f10x_crc.h library\stm32f10x_dac.h \
+  library\stm32f10x_dbgmcu.h library\stm32f10x_dma.h \
+  library\stm32f10x_exti.h library\stm32f10x_flash.h \
+  library\stm32f10x_fsmc.h library\stm32f10x_gpio.h \
+  library\stm32f10x_i2c.h library\stm32f10x_iwdg.h \
+  library\stm32f10x_pwr.h library\stm32f10x_rcc.h \
+  library\stm32f10x_rtc.h library\stm32f10x_sdio.h \
+  library\stm32f10x_spi.h library\stm32f10x_tim.h \
+  library\stm32f10x_usart.h library\stm32f10x_wwdg.h library\misc.h \
+  System\Sys\Sys.h user\CyberMagicWand.h System\delay\Delay.h \
+  Hardware\KEY\KeyStateMachine.h System\delay\delay.h \
+  System\I2C\I2CSoftware.h Hardware\LED\LED.h System\USART\USART1.h \
+  Hardware\IMU\IMU.h Hardware\MPU6050\MPU6050.h user\Model.h \
+  S:\Keil5\ARM\ARMCLANG\Bin\..\include\stdio.h

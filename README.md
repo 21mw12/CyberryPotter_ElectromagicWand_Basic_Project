@@ -1,19 +1,13 @@
 # 关于项目
 
-#### 9月7日更新：
+## 项目来源
 
-- 将nnom项目放入了CNN目录方便python环境安装
-- README中添加了清华镜像源安装环境的命令
+本项目fork自lyg09270的[赛博魔杖项目](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project)，这里将项目使用我之前编写的[STM32标准模块库](https://github.com/21mw12/STM32F1_Module_Lib)进行重构。
 
-#### 8月2日更新：
 
-- 采样频率调整至100HZ
-- 卷积层从4层修改为2层
-- 卷积和池化的步长修改为3
-- 使用了新的训练数据（每种20个）
-- 识别精度得到了提升（效果优于之前每种100个数据的模型）
 
-### 这个项目是什么
+## 这个项目是什么
+
 此项目是Cyberry Potter Electromagic wand魔杖的基础工程，这个工程并不是一个完整的魔杖，只是在魔杖开发过程中的一个片段，通过这个项目你可以用最简单易取得的硬件在Stm32上部署一个卷积神经网络动作分类模型，而不需要专门制作电路板或采购一些特别的模块。你可以在这个项目中亲自训练模型，然后将模型部署在嵌入式设备上，然后根据模型输出执行不同的功能，我认为这是一个很好的学习机会。
 
 
@@ -30,11 +24,9 @@
 
 实验用原理图：
 
-<img src="Schematic.jpg" alt="Schematic.jpg" width="400" height="auto">
+![Schematic](img/Schematic.jpg)
 
-##### 项目视频教程：[Bilibili](https://www.bilibili.com/video/BV13E421w7PY/)
-
-
+- 项目视频教程：[Bilibili](https://www.bilibili.com/video/BV13E421w7PY/)
 
 在使用过程中出现问题可以在Bilibili私信我
 
@@ -43,9 +35,19 @@
 魔杖技术交流群QQ：698619917
 
 
-### 关于完整魔杖
+
+## 关于完整魔杖
 
 完整的魔杖现已完成，请参考链接：[Cyberry_Potter_Electromagic_Wand](https://github.com/lyg09270/Cyberry_Potter_Electromagic_Wand)
+
+
+
+# 项目结构
+
+- breadboard：面包板版本魔杖工程
+- SpellsCard：法术卡片
+- TrainModel：Py训练脚本
+
 
 
 # 硬件需求
@@ -56,7 +58,7 @@
 4. 5个LED灯（推荐添加1K-10K的限流电阻以保护眼睛）
 5. 串口转TTL模块（e.g.CH340）
 
-##### 如果想先尝试我已经训练好的模型，按照上方的原理图连接好你的单片机，打开keil进行烧录你就可以开始使用这个项目了
+**如果想先尝试我已经训练好的模型，按照上方的原理图连接好你的单片机，打开keil进行烧录你就可以开始使用这个项目了**
 
 
 
@@ -64,9 +66,11 @@
 
 本项目可以识别12种动作（法术），你可以将法术打印成卡片来练习法术，图片存放在了[这里](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/tree/main/CNN/SpellsCard)
 
+
+
 # 环境配置
 
-#### Python环境：
+## Python环境：
 
 - 首先需要安装一个anaconda
 
@@ -80,10 +84,11 @@
   - `pip install -r requirements.txt`
   - 使用清华镜像源：`pip install --index-url https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt`
   
-  
-  
-  #### Keil环境配置：
-  
+
+
+
+## Keil环境配置：
+
   - keil版本：keil5(请使用keil官网下载的最新版keil否则可能会遇到一些问题)
   
   - 编译器版本:Arm Compiler6.22
@@ -92,19 +97,18 @@
   
   - 项目在打开keil是可能会需要安装一些库，请根据提示安装
   
-    
 
-#### 需要使用的库的下载链接：(如果你无法使用keil正常安装以下包，可以从链接中下载安装）请选择下方指定的版本下载并安装
+**需要使用的库的下载链接：(如果你无法使用keil正常安装以下包，可以从链接中下载安装）请选择下方指定的版本下载并安装**
 
-1.[CMSIS6.0.0](https://www.keil.arm.com/packs/cmsis-arm/versions/)
+1. [CMSIS6.0.0](https://www.keil.arm.com/packs/cmsis-arm/versions/)
 
-2.[CMSIS compiler 2.1.0](https://www.keil.arm.com/packs/cmsis-compiler-arm/versions/)
+2. [CMSIS compiler 2.1.0](https://www.keil.arm.com/packs/cmsis-compiler-arm/versions/)
 
-3.[Stm32F1xx_DFP2.4.1](https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/versions/)
-
+3. [Stm32F1xx_DFP2.4.1](https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/versions/)
 
 
-#### 可能存在的问题
+
+## 可能存在的问题
 
 编译报错：C:/Users/xxx/AppData/Local/arm/packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c:131:11: error: no member named 'IP' in 'NVIC_Type'
 
@@ -126,6 +130,8 @@ NVIC->IPR[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority;
    - 运行训练脚本你将得到一个.h5的模型文件和一个.h的c头文件
    - .h5文件用于在[串口模型测试脚本](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/blob/main/CNN/CNNTestSerialRaw.py)对未量化的模型进行测试
    - .h文件是单片机用于编译模型所需要的文件
+
+
 
 # 如何继续开发
 
